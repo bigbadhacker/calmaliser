@@ -25,20 +25,26 @@
     <script type="text/javascript" src="js/fonts/cufon-yui.js"></script>
     <script type="text/javascript" src="js/fonts/Keep_Calm_500.font.js"></script>
     <script type="text/javascript">
-        var things = "kill zombies,eat cake,stay safe".split(',');
-        var randomThing = function () {
-            var idx = Math.floor(Math.random() * things.length);
-            return things[idx];
+        var chooseSomething = function() {
+            document.selection && document.selection.empty && document.selection.empty();
+            window.getSelection() && window.getSelection().removeAllRanges();
+            var things = "kill zombies,eat cake,stay safe,eat donuts,hack limbs,eat braaaains".split(',');
+            var randomThing = function () {
+                var idx = Math.floor(Math.random() * things.length);
+                return things[idx];
+            }
+            var chosenThings = randomThing().split(" ");
+            $.each(chosenThings, function(i, thing) {
+                $(".pos_" + i).html(thing.toUpperCase());
+            });
+            var randHex = function() {
+                return Math.floor(Math.random()*10).toString(16);
+            }
+            $("body").css('backgroundColor', '#'+randHex()+randHex()+randHex());
+            Cufon.replace("span.keepcalm, span.keepcalmsmall");
         }
-        var chosenThings = randomThing().split(" ");
-        $.each(chosenThings, function(i, thing) {
-            $(".pos_" + i).html(thing.toUpperCase());
-        });
-        var randHex = function() {
-            return Math.floor(Math.random()*10).toString(16);
-        }
-        $("body").css('backgroundColor', '#'+randHex()+randHex()+randHex());
-        Cufon.replace("span.keepcalm, span.keepcalmsmall");
+        chooseSomething();
+        $("body").live('click', chooseSomething);
     </script>
     <script type="text/javascript" src="js/calmaliser.js"></script>
 </div>

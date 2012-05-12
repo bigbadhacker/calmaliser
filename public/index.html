@@ -3,7 +3,12 @@
 <head>
     <title></title>
     <meta name="viewport" width="device-width, initial-scale=1.0, user-scalable=no" />
-
+    <style type="text/css">
+        .keepcalmsmall {
+            position: relative;
+            top: -16px;
+        }
+    </style>
 </head>
 <body style="color: white; font-size: 92px; font-family: sans-serif">
 <div align="center">
@@ -19,22 +24,16 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/fonts/cufon-yui.js"></script>
     <script type="text/javascript" src="js/fonts/Keep_Calm_500.font.js"></script>
-    <style type="text/css">
-        .keepcalmsmall {
-            position: relative;
-            top: -16px;
-        }
-    </style>
     <script type="text/javascript">
         var things = "kill zombies,eat cake,stay safe".split(',');
         var randomThing = function () {
             var idx = Math.floor(Math.random() * things.length);
             return things[idx];
         }
-        var things = randomThing().split(" ");
-        for (var i=0; i<things.length; i++) {
-            $(".pos_" + i).html(things[i].toUpperCase());
-        }
+        var chosenThings = randomThing().split(" ");
+        $.each(chosenThings, function(i, thing) {
+            $(".pos_" + i).html(thing.toUpperCase());
+        });
         var randHex = function() {
             return Math.floor(Math.random()*10).toString(16);
         }

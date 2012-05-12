@@ -11,7 +11,7 @@ var chooseSomething = function() {
         $(".pos_" + i).html(thing.toUpperCase());
     });
     var randHex = function() {
-        return Math.floor(Math.random()*10).toString(16);
+        return Math.floor(Math.random()*8).toString(16);
     }
     $("body").css('backgroundColor', '#'+randHex()+randHex()+randHex());
     Cufon.replace("span.keepcalm, span.keepcalmsmall");
